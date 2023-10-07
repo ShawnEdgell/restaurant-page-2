@@ -1,8 +1,12 @@
+import './style.css';
 import { loadHome } from './homeTab.js';
 import { loadContact } from './contactTab.js';
 import { loadMenu } from './menuTab.js';
 
 const contentDiv = document.getElementById('content');
+
+// Adding the 'hello' class to contentDiv
+contentDiv.classList.add('hello');
 
 document.getElementById('homeTab').addEventListener('click', () => {
     loadTabContent(loadHome);
