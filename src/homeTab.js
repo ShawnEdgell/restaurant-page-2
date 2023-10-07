@@ -14,10 +14,7 @@ export function loadHome() {
 
     // Images
     const imageUrls = [
-        'https://images.unsplash.com/photo-1515942400420-2b98fed1f515?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
-        'https://your-image-url-here.com/image2.jpg', // Replace with your second image URL
-        'https://your-image-url-here.com/image3.jpg', // Replace with your third image URL
-        // ... Add more URLs as needed
+        'https://images.unsplash.com/photo-1515942400420-2b98fed1f515?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80'
     ];
 
     for (const imageUrl of imageUrls) {
