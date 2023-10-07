@@ -6,26 +6,32 @@ import { loadMenu } from './menuTab.js';
 const contentDiv = document.getElementById('content');
 
 function initButtons() {
-    const tabsDiv = document.createElement('div');
-    tabsDiv.id = 'tabs';
-    document.body.prepend(tabsDiv);
+  const tabsDiv = document.createElement('div');
+  tabsDiv.id = 'tabs';
+  document.body.prepend(tabsDiv);
 
-    const buttons = [
-        { id: 'homeTab', text: 'Home', loader: loadHome },
-        { id: 'menuTab', text: 'Menu', loader: loadMenu },
-        { id: 'contactTab', text: 'Contact', loader: loadContact }
-    ];
+  const buttons = [
+      { id: 'homeTab', text: 'Home', loader: loadHome },
+      { id: 'menuTab', text: 'Menu', loader: loadMenu },
+      { id: 'contactTab', text: 'Contact', loader: loadContact }
+  ];
 
-    buttons.forEach(buttonData => {
-        const btn = document.createElement('button');
-        btn.id = buttonData.id;
-        btn.textContent = buttonData.text;
-        btn.addEventListener('click', () => {
-            loadTabContent(buttonData.loader);
-            setActiveTab(buttonData.id);
-        });
-        tabsDiv.appendChild(btn);
-    });
+  buttons.forEach(buttonData => {
+      const btn = document.createElement('button');
+      btn.id = buttonData.id;
+      btn.textContent = buttonData.text;
+
+      // Add the "active" class to the "Home" tab button
+      if (buttonData.id === 'homeTab') {
+          btn.classList.add('active');
+      }
+
+      btn.addEventListener('click', () => {
+          loadTabContent(buttonData.loader);
+          setActiveTab(buttonData.id);
+      });
+      tabsDiv.appendChild(btn);
+  });
 }
 
 function loadTabContent(loadFunction) {
