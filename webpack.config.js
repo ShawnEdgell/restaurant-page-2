@@ -14,12 +14,19 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Restaurant Page',
+      template: './src/template.html' // Assuming you added this from the earlier steps
     }),
   ],
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
-   publicPath: '/',
+    publicPath: '/',
+  },
+  optimization: {
+    runtimeChunk: 'single',
+  },
+  resolve: { // This is where you add the resolve configuration
+    extensions: ['.js']
   },
 };

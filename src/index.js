@@ -1,18 +1,30 @@
-import _ from 'lodash';
-import printMe from './print.js';
+import { loadHome } from './homeTab.js';
+import { loadContact } from './contactTab.js';
+import { loadMenu } from './menuTab.js';
 
- function component() {
-   const element = document.createElement('div');
-  const btn = document.createElement('button');
+const contentDiv = document.getElementById('content');
 
-   element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+document.getElementById('homeTab').addEventListener('click', () => {
+    loadTabContent(loadHome);
+});
 
-  btn.innerHTML = 'Click me and check the console!';
-  btn.onclick = printMe;
+document.getElementById('contactTab').addEventListener('click', () => {
+    loadTabContent(loadContact);
+});
 
-  element.appendChild(btn);
+document.getElementById('menuTab').addEventListener('click', () => {
+    loadTabContent(loadMenu);
+});
 
-   return element;
- }
+// Load default content on page load
+loadTabContent(loadHome);
 
- document.body.appendChild(component());
+function loadTabContent(loadFunction) {
+    // Clear existing content
+    while (contentDiv.firstChild) {
+        contentDiv.removeChild(contentDiv.firstChild);
+    }
+
+    // Load new content
+    contentDiv.appendChild(loadFunction());
+}
