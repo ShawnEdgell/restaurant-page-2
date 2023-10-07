@@ -6,48 +6,27 @@ import { loadMenu } from './menuTab.js';
 const contentDiv = document.getElementById('content');
 
 function initButtons() {
-    // Get or create the 'tabs' container for the buttons
-    let tabsDiv = document.getElementById('tabs');
-    if (!tabsDiv) {
-        tabsDiv = document.createElement('div');
-        tabsDiv.id = 'tabs';
-        document.body.prepend(tabsDiv);
-    }
+    const tabsDiv = document.createElement('div');
+    tabsDiv.id = 'tabs';
+    document.body.prepend(tabsDiv);
 
-    const homeButton = document.createElement('button');
-    homeButton.id = 'homeTab';
-    homeButton.textContent = 'Home';
-    tabsDiv.appendChild(homeButton);
+    const buttons = [
+        { id: 'homeTab', text: 'Home', loader: loadHome },
+        { id: 'menuTab', text: 'Menu', loader: loadMenu },
+        { id: 'contactTab', text: 'Contact', loader: loadContact }
+    ];
 
-    const menuButton = document.createElement('button');
-    menuButton.id = 'menuTab';
-    menuButton.textContent = 'Menu';
-    tabsDiv.appendChild(menuButton);
-
-    const contactButton = document.createElement('button');
-    contactButton.id = 'contactTab';
-    contactButton.textContent = 'Contact';
-    tabsDiv.appendChild(contactButton);
+    buttons.forEach(buttonData => {
+        const btn = document.createElement('button');
+        btn.id = buttonData.id;
+        btn.textContent = buttonData.text;
+        btn.addEventListener('click', () => {
+            loadTabContent(buttonData.loader);
+            setActiveTab(buttonData.id);
+        });
+        tabsDiv.appendChild(btn);
+    });
 }
-
-// Call the initButtons function to create and append buttons
-initButtons();
-
-// Event listeners for tab clicks
-document.getElementById('homeTab').addEventListener('click', () => {
-    loadTabContent(loadHome);
-});
-
-document.getElementById('contactTab').addEventListener('click', () => {
-    loadTabContent(loadContact);
-});
-
-document.getElementById('menuTab').addEventListener('click', () => {
-    loadTabContent(loadMenu);
-});
-
-// Load default content on page load
-loadTabContent(loadHome);
 
 function loadTabContent(loadFunction) {
     // Clear existing content
@@ -66,5 +45,15 @@ function addFooter() {
     document.body.appendChild(footer);
 }
 
-// Call the function to add the footer
+function setActiveTab(tabId) {
+    const tabs = ['homeTab', 'menuTab', 'contactTab'];
+    tabs.forEach(tab => {
+        document.getElementById(tab).classList.remove('active');
+    });
+    document.getElementById(tabId).classList.add('active');
+}
+
+// Initialization calls
+initButtons();
+loadTabContent(loadHome); // Load the default content (home tab)
 addFooter();
