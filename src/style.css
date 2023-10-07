@@ -1,3 +1,138 @@
-.hello {
-    color: red;
-  }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+body {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f7f7; 
+    position: relative;  /* needed for the absolute positioning of the footer */
+}
+
+h1 {
+    padding: 20px 0;
+}
+
+#tabs {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    position: fixed;     /* This will fix it to the top */
+    top: 0; 
+    left: 50%;           /* Centering */
+    transform: translateX(-50%);  /* Centering */
+    padding: 10px 20px;  /* Some padding */
+    background: #f7f7f7; /* Same as body background */
+    z-index: 1000;       /* Ensure it's on top of other content */
+}
+
+li {
+    list-style: none;
+    
+}
+
+p {
+    max-width: 600px;
+}
+
+button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+#content {
+    width: auto;
+    max-width: 1200px;
+    text-align: center;
+    padding-top: 80px;
+    overflow-y: auto; /* Add this to enable vertical scrolling */
+    max-height: calc(100vh - 80px); /* Set a maximum height that leaves space for the top buttons */
+}
+
+.restaurant-image {
+    width: 300px; 
+    height: 200px;
+    background: #f3f3f3;  /* Light gray background */
+    border: 2px solid #ddd; /* Solid border */
+    padding: 10px; /* Padding around the image */
+    display: block;
+    margin: 20px auto;  /* Center the image */
+}
+
+iframe {
+    display: block;
+    margin: 20px auto 50px; /* Center the iframe horizontally, add vertical spacing at the top, and 50px margin at the bottom */
+}
+
+.menu-category {
+    width: 50%;
+    padding: 20px; /* Adjust the padding as needed */
+    color: #fff; /* Text color for category headings */
+    text-align: center; /* Center the text */
+}
+
+.appetizers {
+    background-color: #FF5733; /* Set the background color for Appetizers */
+}
+
+.main-courses {
+    background-color: #339CFF; /* Set the background color for Main Courses */
+}
+
+.desserts {
+    background-color: #FF33C1; /* Set the background color for Desserts */
+}
+
+.menu-items-container {
+    display: flex;
+    width: 100%;
+    max-width: 800px; /* Adjust the maximum width as needed */
+    margin: 0 auto; /* Center the menu horizontally */
+}
+
+
+/* Style the headings within .menu-category */
+.menu-category h2 {
+    color: #fff; /* Text color for headings */
+    background-color: #333; /* Background color for headings */
+    padding: 10px; /* Padding for headings */
+    margin-bottom: 10px; /* Spacing between headings and list */
+}
+
+/* Style the list items within .menu-category */
+.menu-category ul {
+    list-style: none;
+    padding: 0;
+}
+
+.menu-category ul li {
+    margin-bottom: 8px; /* Spacing between list items */
+    color: #fff; /* Text color for list items */
+}
+
+
+.site-footer {
+    width: 100%;
+    padding: 1rem;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}

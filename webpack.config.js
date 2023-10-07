@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   mode: 'development',
@@ -15,26 +16,31 @@ module.exports = {
     rules: [
       {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
+      // ... other rules if you have any ...
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Restaurant Page',
-      template: './src/template.html' // Assuming you added this from the earlier steps
+      template: './src/template.html'
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css',
     }),
   ],
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
-    publicPath: '/',
+    publicPath: '/restaurant-page-2/', // Ensure this is your GitHub repo name!
   },
   optimization: {
     runtimeChunk: 'single',
   },
-  resolve: { // This is where you add the resolve configuration
+  resolve: {
     extensions: ['.js']
   },
 };

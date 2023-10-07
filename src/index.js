@@ -5,9 +5,35 @@ import { loadMenu } from './menuTab.js';
 
 const contentDiv = document.getElementById('content');
 
-// Adding the 'hello' class to contentDiv
-contentDiv.classList.add('hello');
+function initButtons() {
+    // Get or create the 'tabs' container for the buttons
+    let tabsDiv = document.getElementById('tabs');
+    if (!tabsDiv) {
+        tabsDiv = document.createElement('div');
+        tabsDiv.id = 'tabs';
+        document.body.prepend(tabsDiv);
+    }
 
+    const homeButton = document.createElement('button');
+    homeButton.id = 'homeTab';
+    homeButton.textContent = 'Home';
+    tabsDiv.appendChild(homeButton);
+
+    const menuButton = document.createElement('button');
+    menuButton.id = 'menuTab';
+    menuButton.textContent = 'Menu';
+    tabsDiv.appendChild(menuButton);
+
+    const contactButton = document.createElement('button');
+    contactButton.id = 'contactTab';
+    contactButton.textContent = 'Contact';
+    tabsDiv.appendChild(contactButton);
+}
+
+// Call the initButtons function to create and append buttons
+initButtons();
+
+// Event listeners for tab clicks
 document.getElementById('homeTab').addEventListener('click', () => {
     loadTabContent(loadHome);
 });
@@ -32,3 +58,13 @@ function loadTabContent(loadFunction) {
     // Load new content
     contentDiv.appendChild(loadFunction());
 }
+
+function addFooter() {
+    const footer = document.createElement('footer');
+    footer.textContent = 'Delightful Dishes © 2023. All Rights Reserved.';
+    footer.classList.add('site-footer');
+    document.body.appendChild(footer);
+}
+
+// Call the function to add the footer
+addFooter();
