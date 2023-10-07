@@ -23,11 +23,12 @@ export function loadContact() {
     // Hours of Operation
     const hours = document.createElement("p");
     hours.innerHTML = `
-        <strong>Hours of Operation:</strong><br>
-        Monday - Friday: 9am - 9pm<br>
-        Saturday: 10am - 10pm<br>
-        Sunday: 11am - 8pm
+    <strong>Hours of Operation:</strong><br>
+    Monday - Friday: 9am - 9pm<br>
+    Saturday: 10am - 10pm<br>
+    Sunday: 11am - 8pm
     `;
+    hours.classList.add("mt-20"); // Apply the margin-top utility class to the hours paragraph
     contentDiv.appendChild(hours);
 
     // Embed Google Maps iframe

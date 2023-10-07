@@ -5,40 +5,66 @@
 }
 
 body {
-    width: 100vw;
+    /* background-image: url('image.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; */
+    width: 100%;
+    height: 100vh; /* Make the background cover the full viewport height */
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100vh;
+    justify-content: center; /* Vertically center content */
     font-family: 'Arial', sans-serif;
-    position: relative;  /* needed for the absolute positioning of the footer */
+    position: relative;
+    overflow: hidden; /* Hide overflow content */
 }
 
 h1, h2 {
     margin-top: 25px;
     padding: 10px 0;
+    text-align: center;
+    color: #333;
 }
 
+
+
+h1::after {
+    content: "";
+    display: block;
+    margin: 10px auto 20px;
+    height: 2px; 
+    background-color: #333; 
+    width: 50%;
+}
+
+
 #tabs {
-    width: 100vw;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: fixed;     /* This will fix it to the top */
+    position: fixed;
     top: 0; 
-    left: 50%;           /* Centering */
-    transform: translateX(-50%);  /* Centering */
-    background: #333; /* Same as body background */
-    z-index: 10000;       /* Ensure it's on top of other content */
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    z-index: 10000;
 }
 
-li {
+li, .menu-category ul {
     list-style: none;
-    
 }
 
 p {
     max-width: 600px;
+    text-align: center;
+    color: #333;
+}
+
+/* Add this to your CSS */
+.mt-20 {
+    margin-top: 20px;
 }
 
 button {
@@ -53,44 +79,45 @@ button {
 }
 
 button.active {
-    color: #333;            /* Change this to make the text dark */
-    background-color: #fff; 
+    color: #333;
+    background-color: #fff;
 }
 
 #content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100vw;
-    max-width: 100vw;
-    text-align: center;
-    padding: 80px 20px;
-    overflow-y: auto; /* Add this to enable vertical scrolling */
-    max-height: calc(100vh - 80px); /* Set a maximum height that leaves space for the top buttons */
+    width: 100%;
+    padding: 0 20px;
+    margin: 80px 0 40px;
+    padding-bottom: 40px;
+    overflow-y: auto;
 }
 
 .restaurant-image {
+    display: block; 
     width: 300px; 
     height: auto;
-    background: #f3f3f3;  /* Light gray background */
-    border: 2px solid #ddd; /* Solid border */
-    padding: 10px; /* Padding around the image */
-    display: block;
-    margin: 20px auto;  /* Center the image */
-    overflow: hidden;  /* Add this to hide overflowing parts of the image */
-    position: relative; /* Add this to ensure child image is positioned inside */
+    background: #f3f3f3;
+    border: 2px solid #ddd;
+    padding: 10px;
+    margin: 20px auto; 
+    overflow: hidden;
+    position: relative;
 }
+
+/* .home-page .restaurant-image {
+} */
 
 iframe {
     display: block;
     max-width: 100%;
-    margin: 20px auto 50px; /* Center the iframe horizontally, add vertical spacing at the top, and 50px margin at the bottom */
+    margin: 20px auto 50px;
 }
 
 .menu-category {
-    width: 100vw; /* Adjust the padding as needed */
-    color: #fff; /* Text color for category headings */
-    text-align: center; /* Center the text */
+    color: #fff;
+    text-align: center;
 }
 
 .menu-items-container {
@@ -98,25 +125,16 @@ iframe {
     align-items: center;
 }
 
-
-/* Style the headings within .menu-category */
 .menu-category h2 {
-    color: #333; /* Text color for headings */
-    padding: 10px; /* Padding for headings */
-    margin-bottom: 10px; /* Spacing between headings and list */
-}
-
-/* Style the list items within .menu-category */
-.menu-category ul {
-    list-style: none;
-    padding: 0;
+    color: #333;
+    padding: 10px;
+    margin-bottom: 10px;
 }
 
 .menu-category ul li {
-    margin-bottom: 10px; /* Spacing between list items */
-    color: #333; /* Text color for list items */
+    margin-bottom: 10px;
+    color: #333;
 }
-
 
 .site-footer {
     width: 100%;
