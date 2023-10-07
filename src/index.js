@@ -36,13 +36,16 @@ function loadTabContent(loadFunction) {
 
     // Load new content
     contentDiv.appendChild(loadFunction());
+
+    // Add the footer to the contentDiv
+    contentDiv.appendChild(createFooter());
 }
 
-function addFooter() {
+function createFooter() {
     const footer = document.createElement('footer');
     footer.textContent = 'Delightful Dishes © 2023. All Rights Reserved.';
     footer.classList.add('site-footer');
-    document.body.appendChild(footer);
+    return footer;
 }
 
 function setActiveTab(tabId) {
@@ -56,4 +59,3 @@ function setActiveTab(tabId) {
 // Initialization calls
 initButtons();
 loadTabContent(loadHome); // Load the default content (home tab)
-addFooter();
