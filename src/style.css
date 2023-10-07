@@ -15,8 +15,8 @@ body {
 }
 
 h1, h2 {
-    margin-top: 40px;
-    padding: 20px 0;
+    margin-top: 25px;
+    padding: 10px 0;
 }
 
 #tabs {
@@ -83,7 +83,7 @@ button.active {
 
 iframe {
     display: block;
-    max-width: 100vw;
+    max-width: 100%;
     margin: 20px auto 50px; /* Center the iframe horizontally, add vertical spacing at the top, and 50px margin at the bottom */
 }
 
